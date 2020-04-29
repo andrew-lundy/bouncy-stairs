@@ -9,25 +9,31 @@
 /* Begin PBXBuildFile section */
 		261A0FCB24590A3100F0208C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FCA24590A3100F0208C /* AppDelegate.swift */; };
 		261A0FCD24590A3100F0208C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FCC24590A3100F0208C /* GameScene.sks */; };
-		261A0FCF24590A3100F0208C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FCE24590A3100F0208C /* Actions.sks */; };
 		261A0FD124590A3100F0208C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FD024590A3100F0208C /* GameScene.swift */; };
 		261A0FD324590A3100F0208C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FD224590A3100F0208C /* GameViewController.swift */; };
 		261A0FD624590A3100F0208C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FD424590A3100F0208C /* Main.storyboard */; };
 		261A0FD824590A3400F0208C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FD724590A3400F0208C /* Assets.xcassets */; };
 		261A0FDB24590A3400F0208C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FD924590A3400F0208C /* LaunchScreen.storyboard */; };
+		261A0FE924590BB600F0208C /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FE824590BB600F0208C /* GlobalVariables.swift */; };
+		261A0FED24590CE100F0208C /* HomeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FEC24590CE100F0208C /* HomeScene.sks */; };
+		261A0FEF24590CF300F0208C /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FEE24590CF300F0208C /* HomeScene.swift */; };
+		261A0FF224591A7900F0208C /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FF124591A7900F0208C /* PressStart2P.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		261A0FC724590A3100F0208C /* Bouncy-Stairs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bouncy-Stairs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		261A0FC724590A3100F0208C /* Bouncy Stairs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bouncy Stairs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		261A0FCA24590A3100F0208C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		261A0FCC24590A3100F0208C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		261A0FCE24590A3100F0208C /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		261A0FD024590A3100F0208C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		261A0FD224590A3100F0208C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		261A0FD524590A3100F0208C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		261A0FD724590A3400F0208C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		261A0FDA24590A3400F0208C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		261A0FDC24590A3400F0208C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		261A0FE824590BB600F0208C /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		261A0FEC24590CE100F0208C /* HomeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HomeScene.sks; sourceTree = "<group>"; };
+		261A0FEE24590CF300F0208C /* HomeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
+		261A0FF124591A7900F0208C /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,13 +52,14 @@
 			children = (
 				261A0FC924590A3100F0208C /* Bouncy-Stairs */,
 				261A0FC824590A3100F0208C /* Products */,
+				261A0FF124591A7900F0208C /* PressStart2P.ttf */,
 			);
 			sourceTree = "<group>";
 		};
 		261A0FC824590A3100F0208C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				261A0FC724590A3100F0208C /* Bouncy-Stairs.app */,
+				261A0FC724590A3100F0208C /* Bouncy Stairs.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,10 +67,11 @@
 		261A0FC924590A3100F0208C /* Bouncy-Stairs */ = {
 			isa = PBXGroup;
 			children = (
+				261A0FE524590B2E00F0208C /* SceneKit Files */,
+				261A0FE424590B2400F0208C /* Scene Source Code */,
+				261A0FE324590B1E00F0208C /* Resources */,
+				261A0FE224590B0E00F0208C /* Nodes */,
 				261A0FCA24590A3100F0208C /* AppDelegate.swift */,
-				261A0FCC24590A3100F0208C /* GameScene.sks */,
-				261A0FCE24590A3100F0208C /* Actions.sks */,
-				261A0FD024590A3100F0208C /* GameScene.swift */,
 				261A0FD224590A3100F0208C /* GameViewController.swift */,
 				261A0FD424590A3100F0208C /* Main.storyboard */,
 				261A0FD724590A3400F0208C /* Assets.xcassets */,
@@ -71,6 +79,39 @@
 				261A0FDC24590A3400F0208C /* Info.plist */,
 			);
 			path = "Bouncy-Stairs";
+			sourceTree = "<group>";
+		};
+		261A0FE224590B0E00F0208C /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		261A0FE324590B1E00F0208C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				261A0FE824590BB600F0208C /* GlobalVariables.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		261A0FE424590B2400F0208C /* Scene Source Code */ = {
+			isa = PBXGroup;
+			children = (
+				261A0FD024590A3100F0208C /* GameScene.swift */,
+				261A0FEE24590CF300F0208C /* HomeScene.swift */,
+			);
+			path = "Scene Source Code";
+			sourceTree = "<group>";
+		};
+		261A0FE524590B2E00F0208C /* SceneKit Files */ = {
+			isa = PBXGroup;
+			children = (
+				261A0FCC24590A3100F0208C /* GameScene.sks */,
+				261A0FEC24590CE100F0208C /* HomeScene.sks */,
+			);
+			path = "SceneKit Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,7 +131,7 @@
 			);
 			name = "Bouncy-Stairs";
 			productName = "Bouncy-Stairs";
-			productReference = 261A0FC724590A3100F0208C /* Bouncy-Stairs.app */;
+			productReference = 261A0FC724590A3100F0208C /* Bouncy Stairs.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -131,11 +172,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261A0FED24590CE100F0208C /* HomeScene.sks in Resources */,
 				261A0FD624590A3100F0208C /* Main.storyboard in Resources */,
 				261A0FCD24590A3100F0208C /* GameScene.sks in Resources */,
+				261A0FF224591A7900F0208C /* PressStart2P.ttf in Resources */,
 				261A0FD824590A3400F0208C /* Assets.xcassets in Resources */,
 				261A0FDB24590A3400F0208C /* LaunchScreen.storyboard in Resources */,
-				261A0FCF24590A3100F0208C /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +190,8 @@
 			files = (
 				261A0FD124590A3100F0208C /* GameScene.swift in Sources */,
 				261A0FD324590A3100F0208C /* GameViewController.swift in Sources */,
+				261A0FE924590BB600F0208C /* GlobalVariables.swift in Sources */,
+				261A0FEF24590CF300F0208C /* HomeScene.swift in Sources */,
 				261A0FCB24590A3100F0208C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,12 +339,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QCV468WDTL;
 				INFOPLIST_FILE = "Bouncy-Stairs/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "rustynailgames.com.Bouncy-Stairs";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Bouncy Stairs";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -313,12 +358,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QCV468WDTL;
 				INFOPLIST_FILE = "Bouncy-Stairs/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "rustynailgames.com.Bouncy-Stairs";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Bouncy Stairs";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -18,6 +18,7 @@
 		261A0FED24590CE100F0208C /* HomeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FEC24590CE100F0208C /* HomeScene.sks */; };
 		261A0FEF24590CF300F0208C /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FEE24590CF300F0208C /* HomeScene.swift */; };
 		261A0FF224591A7900F0208C /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FF124591A7900F0208C /* PressStart2P.ttf */; };
+		26AD5ACA245A7879001AF22D /* Staircase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AD5AC9245A7879001AF22D /* Staircase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		261A0FEC24590CE100F0208C /* HomeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HomeScene.sks; sourceTree = "<group>"; };
 		261A0FEE24590CF300F0208C /* HomeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
 		261A0FF124591A7900F0208C /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
+		26AD5AC9245A7879001AF22D /* Staircase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Staircase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		261A0FE224590B0E00F0208C /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				26AD5AC9245A7879001AF22D /* Staircase.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				261A0FD124590A3100F0208C /* GameScene.swift in Sources */,
 				261A0FD324590A3100F0208C /* GameViewController.swift in Sources */,
 				261A0FE924590BB600F0208C /* GlobalVariables.swift in Sources */,
+				26AD5ACA245A7879001AF22D /* Staircase.swift in Sources */,
 				261A0FEF24590CF300F0208C /* HomeScene.swift in Sources */,
 				261A0FCB24590A3100F0208C /* AppDelegate.swift in Sources */,
 			);

@@ -49,7 +49,6 @@ extension HomeScene {
         GlobalVariables.shared.bounce(node: playButton)
         addChild(playButton)
         
-        
         optionsButton = SKSpriteNode(imageNamed: "Options_Button")
         optionsButton.position = CGPoint(x: playButton.position.x, y: playButton.position.y - 150)
         optionsButton.size = CGSize(width: optionsButton.size.width / 4, height: optionsButton.size.height / 4)

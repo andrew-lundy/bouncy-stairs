@@ -31,8 +31,8 @@ class Staircase: SKNode {
     init(frame: CGRect) {
         super.init()
         xPosition = frame.maxX + 150
-        endPosition = frame.minX - 1500
-        stairRect = CGRect(x: frame.midX / 7, y: frame.minY, width: stairSize.width, height: stairSize.height)
+        endPosition = frame.minX - 2000
+        stairRect = CGRect(x: xPosition, y: frame.minY, width: stairSize.width, height: stairSize.height)
         moveStairs = SKAction.move(to: CGPoint(x: endPosition, y: self.position.y), duration: 4)
         moveSequence = SKAction.sequence([moveStairs, SKAction.removeFromParent()])
     }
@@ -78,10 +78,7 @@ class Staircase: SKNode {
         stairSeven.position = CGPoint(x: stairSix.position.x + stairSize.width, y: stairSix.position.y + stairSize.height)
         self.addChild(stairSeven)
                 
-        
-        self.run(moveStairs)
-        
-        
+        self.run(moveSequence)
     }
     
 

@@ -14,11 +14,11 @@ import UIKit
 class GameScene: SKScene {
         
     var stairCase: Staircase!
-    
+    var secondStairCase: Staircase!
     
     func createStaircase() {
         stairCase = Staircase(frame: frame)
-        stairCase.createStairs()
+        stairCase.createStairSections()
         addChild(stairCase)
     }
     
@@ -36,8 +36,8 @@ class GameScene: SKScene {
         
     
     override func didMove(to view: SKView) {
-        
         startStairs()
+       
         
     }
     

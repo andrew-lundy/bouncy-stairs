@@ -21,6 +21,20 @@ class Staircase: SKNode {
     var stairFive: SKShapeNode!
     var stairSix: SKShapeNode!
     var stairSeven: SKShapeNode!
+    var stairEight: SKShapeNode!
+    var stairNine: SKShapeNode!
+    var stairTen: SKShapeNode!
+    var stairEleven: SKShapeNode!
+    var stairTwelve: SKShapeNode!
+    var stairThirteen: SKShapeNode!
+    var stairFourteen: SKShapeNode!
+    var stairFifteen: SKShapeNode!
+    var stairSixteen: SKShapeNode!
+    var stairSeventeen: SKShapeNode!
+    var stairEighteen: SKShapeNode!
+    var stairNineteen: SKShapeNode!
+    var stairTwenty: SKShapeNode!
+    var stairTwentyOne: SKShapeNode!
     
     var xPosition: CGFloat!
     var endPosition: CGFloat!
@@ -31,7 +45,7 @@ class Staircase: SKNode {
     init(frame: CGRect) {
         super.init()
         xPosition = frame.maxX + 150
-        endPosition = frame.minX - 2000
+        endPosition = frame.minX - 2500
         stairRect = CGRect(x: xPosition, y: frame.minY, width: stairSize.width, height: stairSize.height)
         moveStairs = SKAction.move(to: CGPoint(x: endPosition, y: self.position.y), duration: 4)
         moveSequence = SKAction.sequence([moveStairs, SKAction.removeFromParent()])
@@ -43,6 +57,7 @@ class Staircase: SKNode {
     
     
     func createStairs() {
+        // Section One
         stairOne = SKShapeNode(rect: stairRect)
         stairOne.fillColor = colors.randomElement()!
         stairOne.position = CGPoint(x: 0, y: 200)
@@ -77,10 +92,59 @@ class Staircase: SKNode {
         stairSeven.fillColor = colors.randomElement()!
         stairSeven.position = CGPoint(x: stairSix.position.x + stairSize.width, y: stairSix.position.y + stairSize.height)
         self.addChild(stairSeven)
-                
+        
+        
+
+        
+        
+        // Section Two
+//        stairEight = SKShapeNode(rect: stairRect)
+//        stairEight.fillColor = colors.randomElement()!
+//        stairEight.position = CGPoint(x: 0, y: 200)
+//        self.addChild(stairEight)
+//
+//        stairNine = SKShapeNode(rect: stairRect)
+//        stairNine.fillColor = colors.randomElement()!
+//        stairNine.position = CGPoint(x: stairEight.position.x + stairSize.width, y: stairEight.position.y - stairSize.height)
+//        self.addChild(stairNine)
+//
+//        stairTen = SKShapeNode(rect: stairRect)
+//        stairTen.fillColor = colors.randomElement()!
+//        stairTen.position = CGPoint(x: stairNine.position.x + stairSize.width, y: stairNine.position.y - stairSize.height)
+//        self.addChild(stairTen)
         self.run(moveSequence)
+//        createStairs()
+        
+        for i in 0...7 {
+            
+        }
+        
     }
     
+    func createStairSections() {
+        stairOne = SKShapeNode(rect: stairRect)
+        stairOne.fillColor = colors.randomElement()!
+        stairOne.position = CGPoint(x: 0, y: 200)
+        self.addChild(stairOne)
+        
+        for i in 1...3 {
+            let stair = SKShapeNode(rect: stairRect)
+            stair.fillColor = colors.randomElement()!
+            stair.position = CGPoint(x: 0 + (CGFloat(i) * stairSize.width), y: 200 - (CGFloat(i) * stairSize.height))
+            self.addChild(stair)
+        }
+        
+        for i in 1...3 {
+            let stair = SKShapeNode(rect: stairRect)
+            stair.fillColor = colors.randomElement()!
+            stair.position = CGPoint(x: (stairRect.size.width * 3) + (CGFloat(i) * stairSize.width), y: 125 + (CGFloat(i) * stairSize.height))
+            self.addChild(stair)
+        }
+        
+        self.run(moveSequence)
+        
+        
+    }
 
     
     

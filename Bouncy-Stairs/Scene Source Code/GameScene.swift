@@ -27,8 +27,8 @@ class GameScene: SKScene {
             self.createStaircase()
         }
         
-        let wait = SKAction.wait(forDuration: 1)
-        let stairGenerationSequence = SKAction.sequence([wait, create, wait])
+        let wait = SKAction.wait(forDuration: 2.5 )
+        let stairGenerationSequence = SKAction.sequence([create, wait])
         let repeatForever = SKAction.repeatForever(stairGenerationSequence)
         run(repeatForever)
     }

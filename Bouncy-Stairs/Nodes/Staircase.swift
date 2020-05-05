@@ -47,9 +47,9 @@ class Staircase: SKNode {
     init(frame: CGRect) {
         super.init()
         xPosition = frame.maxX + 150
-        endPosition = frame.minX - 4000
+        endPosition = frame.minX - 5000
         stairRect = CGRect(x: xPosition, y: frame.minY, width: stairSize.width, height: stairSize.height)
-        moveStairs = SKAction.move(to: CGPoint(x: endPosition, y: self.position.y), duration: 4)
+        moveStairs = SKAction.move(to: CGPoint(x: endPosition, y: self.position.y), duration: 8)
         moveSequence = SKAction.sequence([moveStairs, SKAction.removeFromParent()])
     }
     
@@ -96,30 +96,8 @@ class Staircase: SKNode {
         self.addChild(stairSeven)
         
         
-
-        
-        
-        // Section Two
-//        stairEight = SKShapeNode(rect: stairRect)
-//        stairEight.fillColor = colors.randomElement()!
-//        stairEight.position = CGPoint(x: 0, y: 200)
-//        self.addChild(stairEight)
-//
-//        stairNine = SKShapeNode(rect: stairRect)
-//        stairNine.fillColor = colors.randomElement()!
-//        stairNine.position = CGPoint(x: stairEight.position.x + stairSize.width, y: stairEight.position.y - stairSize.height)
-//        self.addChild(stairNine)
-//
-//        stairTen = SKShapeNode(rect: stairRect)
-//        stairTen.fillColor = colors.randomElement()!
-//        stairTen.position = CGPoint(x: stairNine.position.x + stairSize.width, y: stairNine.position.y - stairSize.height)
-//        self.addChild(stairTen)
         self.run(moveSequence)
-//        createStairs()
-        
-        for i in 0...7 {
-            
-        }
+
     }
     
     func createStairSections() {
@@ -128,35 +106,68 @@ class Staircase: SKNode {
 //        stairOne.position = CGPoint(x: 0, y: 200)
 //        self.addChild(stairOne)
         
+        // First Section
         for i in 1...4 {
             let stair = SKShapeNode(rect: stairRect)
             stair.fillColor = colors.randomElement()!
+            stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: 0 + (CGFloat(i) * stairSize.width), y: 200 - (CGFloat(i) * stairSize.height))
+            stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
+            stair.physicsBody?.affectedByGravity = false
             self.addChild(stair)
         }
         
         for i in 1...3 {
             let stair = SKShapeNode(rect: stairRect)
             stair.fillColor = colors.randomElement()!
+            stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: (stairRect.size.width * 4) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
+            stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
+            stair.physicsBody?.affectedByGravity = false
             self.addChild(stair)
         }
         
+        // Second Section
         for i in 1...4 {
             let stair = SKShapeNode(rect: stairRect)
             stair.fillColor = colors.randomElement()!
+            stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: (stairRect.size.width * 7) + (CGFloat(i) * stairSize.width), y: 200 - (CGFloat(i) * stairSize.height))
+            stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
+            stair.physicsBody?.affectedByGravity = false
             self.addChild(stair)
         }
         
         for i in 1...3 {
             let stair = SKShapeNode(rect: stairRect)
             stair.fillColor = colors.randomElement()!
+            stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: (stairRect.size.width * 11) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
+            stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
+            stair.physicsBody?.affectedByGravity = false
             self.addChild(stair)
         }
         
-      
+        // Third Section
+        for i in 1...4 {
+            let stair = SKShapeNode(rect: stairRect)
+            stair.fillColor = colors.randomElement()!
+            stair.strokeColor = stair.fillColor
+            stair.position = CGPoint(x: (stairRect.size.width * 14) + (CGFloat(i) * stairSize.width), y: 200 - (CGFloat(i) * stairSize.height))
+            stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
+            stair.physicsBody?.affectedByGravity = false
+            self.addChild(stair)
+        }
+        
+      for i in 1...3 {
+            let stair = SKShapeNode(rect: stairRect)
+            stair.fillColor = colors.randomElement()!
+            stair.strokeColor = stair.fillColor
+            stair.position = CGPoint(x: (stairRect.size.width * 18) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
+          stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
+          stair.physicsBody?.affectedByGravity = false
+            self.addChild(stair)
+      }
         
         self.run(moveSequence)
         

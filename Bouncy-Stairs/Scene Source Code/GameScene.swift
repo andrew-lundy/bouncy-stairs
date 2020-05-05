@@ -27,18 +27,23 @@ class GameScene: SKScene {
             self.createStaircase()
         }
         
-        let wait = SKAction.wait(forDuration: 2.5 )
+        let wait = SKAction.wait(forDuration: 5.03)
         let stairGenerationSequence = SKAction.sequence([create, wait])
         let repeatForever = SKAction.repeatForever(stairGenerationSequence)
         run(repeatForever)
     }
     
-        
+    
     
     override func didMove(to view: SKView) {
         startStairs()
-       
+        let ball = SKShapeNode(circleOfRadius: CGFloat(35))
+        ball.position = CGPoint(x: 100, y: 4500)
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: 35)
         
+        ball.fillColor = .cyan
+        ball.strokeColor = .cyan
+        addChild(ball)
     }
     
     

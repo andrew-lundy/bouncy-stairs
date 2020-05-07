@@ -113,7 +113,7 @@ class Staircase: SKNode {
             stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: 0 + (CGFloat(i) * stairSize.width), y: 200 - (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
-            stair.physicsBody?.affectedByGravity = false
+            stair.physicsBody?.isDynamic = false
             self.addChild(stair)
         }
         
@@ -123,7 +123,7 @@ class Staircase: SKNode {
             stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: (stairRect.size.width * 4) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
-            stair.physicsBody?.affectedByGravity = false
+            stair.physicsBody?.isDynamic = false
             self.addChild(stair)
         }
         
@@ -134,7 +134,7 @@ class Staircase: SKNode {
             stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: (stairRect.size.width * 7) + (CGFloat(i) * stairSize.width), y: 200 - (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
-            stair.physicsBody?.affectedByGravity = false
+            stair.physicsBody?.isDynamic = false
             self.addChild(stair)
         }
         
@@ -144,7 +144,7 @@ class Staircase: SKNode {
             stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: (stairRect.size.width * 11) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
-            stair.physicsBody?.affectedByGravity = false
+            stair.physicsBody?.isDynamic = false
             self.addChild(stair)
         }
         
@@ -155,7 +155,7 @@ class Staircase: SKNode {
             stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: (stairRect.size.width * 14) + (CGFloat(i) * stairSize.width), y: 200 - (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
-            stair.physicsBody?.affectedByGravity = false
+            stair.physicsBody?.isDynamic = false
             self.addChild(stair)
         }
         
@@ -164,8 +164,8 @@ class Staircase: SKNode {
             stair.fillColor = colors.randomElement()!
             stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: (stairRect.size.width * 18) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
-          stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
-          stair.physicsBody?.affectedByGravity = false
+            stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
+            stair.physicsBody?.isDynamic = false
             self.addChild(stair)
       }
         

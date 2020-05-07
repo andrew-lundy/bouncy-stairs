@@ -9,10 +9,67 @@
 import Foundation
 import SpriteKit
 
-class Ball: SKShapeNode {
+class Ball: SKSpriteNode {
     
-
-
+    // MARK: - Properties
+    var ballTextureNames: [String]!
+    var currentTextureName: String!
+    var ballTexture: SKTexture!
+    
+    
+    // MARK: - Methods
+    func changeBallTexture() {
+        ballTextureNames = ["Ball_Blue", "Ball_Green", "Ball_Yellow", "Ball_Red"]
+        currentTextureName = ballTextureNames.randomElement()
+        ballTexture = SKTexture(imageNamed: "\(currentTextureName!)")
+        
+        self.run(SKAction.setTexture(ballTexture))
+        
+        switch currentTextureName {
+        case "Ball_Blue":
+            color = UIColor.blue
+        case "Ball_Green":
+            color = UIColor.green
+        case "Ball_Yellow":
+            color = UIColor.yellow
+        case "Ball_Red":
+            color = UIColor.red
+        default:
+            color = UIColor.red
+        }
+    }
+    
+    // MARK: - Init
+    init() {
+        ballTextureNames = ["Ball_Blue", "Ball_Green", "Ball_Yellow", "Ball_Red"]
+        currentTextureName = ballTextureNames.randomElement()
+        ballTexture = SKTexture(imageNamed: currentTextureName)
+        let ballSize = CGSize(width: 115, height: 115)
+        super.init(texture: ballTexture, color: UIColor.clear, size: ballSize)
+        
+        name = "ball"
+        
+        switch currentTextureName {
+        case "Ball_Blue":
+            color = UIColor.blue
+        case "Ball_Green":
+            color = UIColor.green
+        case "Ball_Yellow":
+            color = UIColor.yellow
+        case "Ball_Red":
+            color = UIColor.red
+        default:
+            color = UIColor.red
+        }
+        
+        position = CGPoint(x: 100, y: 4700)
+        physicsBody = SKPhysicsBody(texture: ballTexture, size: ballSize)
+        physicsBody?.restitution = 0.5
+        physicsBody?.isDynamic = true
+   
+        
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

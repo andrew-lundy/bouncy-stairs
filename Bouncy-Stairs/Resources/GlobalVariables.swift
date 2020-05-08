@@ -19,7 +19,7 @@ enum GameState {
 
 enum CollisionTypes: UInt32 {
     case ball = 1
-    case wall = 2
+    case stair = 2
     case ground = 4
     case scoreDetect = 8
 }

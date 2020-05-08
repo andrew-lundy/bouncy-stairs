@@ -23,7 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Methods
     func createStaircase() {
         stairCase = Staircase(frame: frame)
-        stairCase.createStairSections()
+        stairCase.createStairSections(with: ball)
         addChild(stairCase)
     }
     
@@ -45,17 +45,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func ballCollided(with node: SKNode) {
+        print("BALL COLLIDED")
         if node.name == "scoreDetect" {
             print("PLAYER SCORED")
             self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
             score += 1
             ball.changeBallTexture()
-            
+            ball.run(.rotate(byAngle: -15, duration: 5))
+        } else if node.name == "endGameDetect" {
+            print("END GAME")
+        } else {
+            print("NO NODE NAME")
         }
     }
     
     // MARK: - Init
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
         startGame()
        
     }
@@ -66,17 +72,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        
+        if ball.position.x
    
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
         if nodeA == ball {
-            
+            ballCollided(with: nodeB)
+        } else if nodeB == ball {
+            ballCollided(with: nodeA)
         }
-        
     }
     
 }

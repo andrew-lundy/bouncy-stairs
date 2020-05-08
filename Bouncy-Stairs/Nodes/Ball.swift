@@ -64,6 +64,9 @@ class Ball: SKSpriteNode {
         
         position = CGPoint(x: 100, y: 4700)
         physicsBody = SKPhysicsBody(texture: ballTexture, size: ballSize)
+        physicsBody?.contactTestBitMask = CollisionTypes.stair.rawValue
+        physicsBody?.collisionBitMask = CollisionTypes.stair.rawValue
+        physicsBody?.categoryBitMask = CollisionTypes.ball.rawValue
         physicsBody?.restitution = 0.5
         physicsBody?.isDynamic = true
    

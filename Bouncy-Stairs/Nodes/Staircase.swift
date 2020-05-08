@@ -57,55 +57,19 @@ class Staircase: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    func createStairs() {
-        // Section One
-        stairOne = SKShapeNode(rect: stairRect)
-        stairOne.fillColor = colors.randomElement()!
-        stairOne.position = CGPoint(x: 0, y: 200)
-        self.addChild(stairOne)
-        
-        stairTwo = SKShapeNode(rect: stairRect)
-        stairTwo.fillColor = colors.randomElement()!
-        stairTwo.position = CGPoint(x: stairOne.position.x + stairSize.width, y: stairOne.position.y - stairSize.height)
-        self.addChild(stairTwo)
-    
-        stairThree = SKShapeNode(rect: stairRect)
-        stairThree.fillColor = colors.randomElement()!
-        stairThree.position = CGPoint(x: stairTwo.position.x + stairSize.width, y: stairTwo.position.y - stairSize.height)
-        self.addChild(stairThree)
-        
-        stairFour = SKShapeNode(rect: stairRect)
-        stairFour.fillColor = colors.randomElement()!
-        stairFour.position = CGPoint(x: stairThree.position.x + stairSize.width, y: stairThree.position.y - stairSize.height)
-        self.addChild(stairFour)
-        
-        stairFive = SKShapeNode(rect: stairRect)
-        stairFive.fillColor = colors.randomElement()!
-        stairFive.position = CGPoint(x: stairFour.position.x + stairSize.width, y: stairFour.position.y + stairSize.height)
-        self.addChild(stairFive)
-        
-        stairSix = SKShapeNode(rect: stairRect)
-        stairSix.fillColor = colors.randomElement()!
-        stairSix.position = CGPoint(x: stairFive.position.x + stairSize.width, y: stairFive.position.y + stairSize.height)
-        self.addChild(stairSix)
-        
-        stairSeven = SKShapeNode(rect: stairRect)
-        stairSeven.fillColor = colors.randomElement()!
-        stairSeven.position = CGPoint(x: stairSix.position.x + stairSize.width, y: stairSix.position.y + stairSize.height)
-        self.addChild(stairSeven)
-        
-        
-        self.run(moveSequence)
-
+    func assignStairNameAndPhysicsMasks(stair: SKShapeNode, ball: SKSpriteNode) {
+        if stair.fillColor == ball.color {
+            stair.name = "scoreDetect"
+            stair.physicsBody?.collisionBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.categoryBitMask = CollisionTypes.stair.rawValue
+        } else if stair.fillColor != ball.color {
+            stair.name = "gameOverStair"
+            stair.physicsBody?.collisionBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.categoryBitMask = CollisionTypes.stair.rawValue
+        }
     }
     
-    func createStairSections() {
-//        stairOne = SKShapeNode(rect: stairRect)
-//        stairOne.fillColor = colors.randomElement()!
-//        stairOne.position = CGPoint(x: 0, y: 200)
-//        self.addChild(stairOne)
-        
+    func createStairSections(with ball: SKSpriteNode) {
         // First Section
         for i in 1...4 {
             let stair = SKShapeNode(rect: stairRect)
@@ -114,6 +78,16 @@ class Staircase: SKNode {
             stair.position = CGPoint(x: 0 + (CGFloat(i) * stairSize.width), y: 200 - (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
             stair.physicsBody?.isDynamic = false
+            stair.physicsBody?.contactTestBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.collisionBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.categoryBitMask = CollisionTypes.stair.rawValue
+            
+            if stair.fillColor == ball.color {
+                stair.name = "scoreDetect"
+            } else if stair.fillColor != ball.color {
+                stair.name = "endGameDetect"
+            }
+            
             self.addChild(stair)
         }
         
@@ -124,6 +98,16 @@ class Staircase: SKNode {
             stair.position = CGPoint(x: (stairRect.size.width * 4) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
             stair.physicsBody?.isDynamic = false
+            stair.physicsBody?.contactTestBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.collisionBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.categoryBitMask = CollisionTypes.stair.rawValue
+            
+            if stair.fillColor == ball.color {
+                stair.name = "scoreDetect"
+            } else if stair.fillColor != ball.color {
+                stair.name = "endGameDetect"
+            }
+            
             self.addChild(stair)
         }
         
@@ -135,6 +119,16 @@ class Staircase: SKNode {
             stair.position = CGPoint(x: (stairRect.size.width * 7) + (CGFloat(i) * stairSize.width), y: 200 - (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
             stair.physicsBody?.isDynamic = false
+            stair.physicsBody?.contactTestBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.collisionBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.categoryBitMask = CollisionTypes.stair.rawValue
+            
+            if stair.fillColor == ball.color {
+                stair.name = "scoreDetect"
+            } else if stair.fillColor != ball.color {
+                stair.name = "endGameDetect"
+            }
+            
             self.addChild(stair)
         }
         
@@ -145,6 +139,16 @@ class Staircase: SKNode {
             stair.position = CGPoint(x: (stairRect.size.width * 11) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
             stair.physicsBody?.isDynamic = false
+            stair.physicsBody?.contactTestBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.collisionBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.categoryBitMask = CollisionTypes.stair.rawValue
+            
+            if stair.fillColor == ball.color {
+                stair.name = "scoreDetect"
+            } else if stair.fillColor != ball.color {
+                stair.name = "endGameDetect"
+            }
+            
             self.addChild(stair)
         }
         
@@ -156,20 +160,39 @@ class Staircase: SKNode {
             stair.position = CGPoint(x: (stairRect.size.width * 14) + (CGFloat(i) * stairSize.width), y: 200 - (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
             stair.physicsBody?.isDynamic = false
+            stair.physicsBody?.contactTestBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.collisionBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.categoryBitMask = CollisionTypes.stair.rawValue
+            
+            if stair.fillColor == ball.color {
+                stair.name = "scoreDetect"
+            } else if stair.fillColor != ball.color {
+                stair.name = "endGameDetect"
+            }
+            
             self.addChild(stair)
         }
         
       for i in 1...3 {
+        
             let stair = SKShapeNode(rect: stairRect)
             stair.fillColor = colors.randomElement()!
             stair.strokeColor = stair.fillColor
             stair.position = CGPoint(x: (stairRect.size.width * 18) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
             stair.physicsBody = SKPhysicsBody(rectangleOf: stairSize, center: CGPoint(x: stairSize.width * 10 + 60, y: stairSize.height / 2))
             stair.physicsBody?.isDynamic = false
+            stair.physicsBody?.contactTestBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.collisionBitMask = CollisionTypes.ball.rawValue
+            stair.physicsBody?.categoryBitMask = CollisionTypes.stair.rawValue
+            
+            if stair.fillColor == ball.color {
+                stair.name = "scoreDetect"
+            } else if stair.fillColor != ball.color {
+                stair.name = "endGameDetect"
+            }
+        
             self.addChild(stair)
-      }
-        
+        }
         self.run(moveSequence)
-        
     }
 }

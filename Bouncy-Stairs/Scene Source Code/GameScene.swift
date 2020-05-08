@@ -36,6 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score = 0
         
         ball = Ball()
+        ball.position = CGPoint(x: 100, y: 4700)
         addChild(ball)
         
         let wait = SKAction.wait(forDuration: 5.03)
@@ -66,14 +67,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        
     }
     
+    var dragDistance: CGFloat!
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let startingX = touch.location(in: self).x
             
+        }
     }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-        if ball.position.x
+//        if ball.position.x
    
     }
     
@@ -88,6 +103,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ballCollided(with: nodeA)
         }
     }
+    
+    
     
 }
 

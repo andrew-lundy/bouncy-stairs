@@ -62,7 +62,7 @@ class Ball: SKSpriteNode {
             color = UIColor.red
         }
         
-        position = CGPoint(x: 100, y: 4700)
+        
         physicsBody = SKPhysicsBody(texture: ballTexture, size: ballSize)
         physicsBody?.contactTestBitMask = CollisionTypes.stair.rawValue
         physicsBody?.collisionBitMask = CollisionTypes.stair.rawValue

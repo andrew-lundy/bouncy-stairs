@@ -54,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             score += 1
             ball.changeBallTexture()
             ball.run(.rotate(byAngle: -15, duration: 5))
+            updateBallAndStairColor(of: stairCase, and: ball)
         } else if node.name == "endGameDetect" {
 //            print("END GAME")
             endGame()
@@ -62,6 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             score += 1
             ball.changeBallTexture()
             ball.run(.rotate(byAngle: -15, duration: 5))
+            updateBallAndStairColor(of: stairCase, and: ball)
         }
     }
     

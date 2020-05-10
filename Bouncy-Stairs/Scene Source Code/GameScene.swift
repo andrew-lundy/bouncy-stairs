@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ball: Ball!
     var score: Int!
     
+    var ballCenterPosition: CGFloat!
     
     // MARK: - Methods
     func createStaircase() {
@@ -34,9 +35,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         score = 0
-        
+        ballCenterPosition = 110
         ball = Ball()
-        ball.position = CGPoint(x: 100, y: 4700)
+        ball.position = CGPoint(x: ballCenterPosition, y: 4700)
         addChild(ball)
         
         let wait = SKAction.wait(forDuration: 5.03)
@@ -46,54 +47,102 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func ballCollided(with node: SKNode) {
-        print("BALL COLLIDED")
+//        print("BALL COLLIDED")
         if node.name == "scoreDetect" {
-            print("PLAYER SCORED")
+//            print("PLAYER SCORED")
             self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
             score += 1
             ball.changeBallTexture()
             ball.run(.rotate(byAngle: -15, duration: 5))
         } else if node.name == "endGameDetect" {
-            print("END GAME")
+//            print("END GAME")
+            endGame()
         } else {
-            print("NO NODE NAME")
+//            print("NO NODE NAME")
+            score += 1
+            ball.changeBallTexture()
+            ball.run(.rotate(byAngle: -15, duration: 5))
         }
+    }
+    
+    func endGame() {
+        scene?.removeAllActions()
+        stairCase.isPaused = true
+    }
+    
+    func returnDistanceBetweenPoints(startingPoint: CGPoint, endingPoint: CGPoint) -> CGFloat {
+        let distanceBetweenX = startingPoint.x - endingPoint.x
+        let distanceBetweenY = startingPoint.y - endingPoint.y
+        
+        let distanceBetweenPoints = sqrt(distanceBetweenX * distanceBetweenX + distanceBetweenY * distanceBetweenY)
+        
+        return distanceBetweenPoints
+        
     }
     
     // MARK: - Init
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         startGame()
-       
+        
     }
     
     var dragDistance: CGFloat!
+    var startingX: CGFloat!
+    var endingX: CGFloat!
+    var startingY: CGFloat!
+    var endingY: CGFloat!
+    
+    var startingPoint: CGPoint!
+    var endingPoint: CGPoint!
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let startingX = touch.location(in: self).x
-            
+            startingPoint = touch.location(in: self)
+            print(touch.location(in: self).y)
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+      
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        if let touch = touches.first {
+            endingPoint = touch.location(in: self)
+            
+            let dragDistance = returnDistanceBetweenPoints(startingPoint: startingPoint, endingPoint: endingPoint)
+            ball.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -dragDistance))
+        }
     }
     
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-//        if ball.position.x
-   
+        if ball.position.x < ballCenterPosition || ball.position.x > ballCenterPosition {
+            ball.position.x = ballCenterPosition
+        }
     }
     
+    
+    func updateBallAndStairColor(of staircase: SKNode, and ball: SKSpriteNode) {
+        for stair in staircase.children {
+            guard let stair = stair as? SKShapeNode else { return }
+            if stair.fillColor == ball.color {
+                stair.name = "scoreDetect"
+            } else if stair.fillColor != ball.color {
+                stair.name = "endGameDetect"
+            }
+        }
+    }
+    
+    
+    // MARK: - Delegate Methods
     func didBegin(_ contact: SKPhysicsContact) {
-        
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
@@ -103,8 +152,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ballCollided(with: nodeA)
         }
     }
-    
-    
     
 }
 

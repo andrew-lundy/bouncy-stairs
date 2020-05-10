@@ -63,11 +63,13 @@ class Ball: SKSpriteNode {
         }
         
         
-        physicsBody = SKPhysicsBody(texture: ballTexture, size: ballSize)
+        
+//        physicsBody = SKPhysicsBody(texture: ballTexture, size: ballSize)
+        physicsBody = SKPhysicsBody(circleOfRadius: ballSize.width * 0.40)
         physicsBody?.contactTestBitMask = CollisionTypes.stair.rawValue
         physicsBody?.collisionBitMask = CollisionTypes.stair.rawValue
         physicsBody?.categoryBitMask = CollisionTypes.ball.rawValue
-        physicsBody?.restitution = 0.5
+        physicsBody?.restitution = 0.3
         physicsBody?.isDynamic = true
    
         

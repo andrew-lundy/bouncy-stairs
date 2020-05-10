@@ -10,23 +10,42 @@ import Foundation
 import SpriteKit
 
 class HomeScene: SKScene {
+    
+    // MARK: - Properties
     var playButton: SKSpriteNode!
     var optionsButton: SKSpriteNode!
     var gameTitle: SKLabelNode!
     var highScoreLabel: SKLabelNode!
     var bounce: SKAction!
     
+    // MARK: - Methods
     
     
+    // MARK: - Init
     override func didMove(to view: SKView) {
         print("HomeScene")
         createMainMenu()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let touchLocation = touch.location(in: self)
+        let touchedNodes = nodes(at: touchLocation)
+        
+        for node in touchedNodes {
+            if node.name == "playButton" {
+                guard let gameScene = SKScene(fileNamed: "GameScene") else { return }
+                gameScene.scaleMode = .aspectFill
+                
+                scene?.view?.presentScene(gameScene, transition: .crossFade(withDuration: 2))
+            }
+        }
+        
+    }
+    
 }
 
-
-
-
+// MARK: - Extensions
 extension HomeScene {
     func createMainMenu() {
         gameTitle = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)

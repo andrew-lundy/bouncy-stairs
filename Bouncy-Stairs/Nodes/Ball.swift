@@ -44,7 +44,7 @@ class Ball: SKSpriteNode {
         ballTextureNames = ["Ball_Blue", "Ball_Green", "Ball_Yellow", "Ball_Red"]
         currentTextureName = ballTextureNames.randomElement()
         ballTexture = SKTexture(imageNamed: currentTextureName)
-        let ballSize = CGSize(width: 115, height: 115)
+        let ballSize = CGSize(width: 90, height: 90)
         super.init(texture: ballTexture, color: UIColor.clear, size: ballSize)
         
         name = "ball"

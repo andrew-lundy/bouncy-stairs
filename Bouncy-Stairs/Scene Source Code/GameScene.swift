@@ -17,9 +17,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var stairCase: Staircase!
     var secondStairCase: Staircase!
     var ball: Ball!
+    var ballCenterPosition: CGFloat!
+    var pauseButton: SKSpriteNode!
+    
     var score: Int!
     
-    var ballCenterPosition: CGFloat!
+    var gameOverLabel: SKLabelNode!
+    var playAgain: SKSpriteNode!
+    var dimmer: SKSpriteNode!
+    
+    var dragDistance: CGFloat!
+    var startingPoint: CGPoint!
+    var endingPoint: CGPoint!
+    
     
     // MARK: - Methods
     func createStaircase() {
@@ -29,7 +39,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func startGame() {
-        
         let create = SKAction.run {
             self.createStaircase()
         }
@@ -67,9 +76,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func createPlayingHud() {
+        pauseButton.size = CGSize(width: 75, height: 80)
+        pauseButton.position = CGPoint(x: (scene?.frame.maxX)! - (pauseButton.size.width + 25), y: (scene?.frame.maxY)! - 150)
+        addChild(pauseButton)
+    }
+    
     func endGame() {
         scene?.removeAllActions()
-        stairCase.isPaused = true
+        stairCase.removeAllActions()
+        
+        gameOverLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
+        gameOverLabel.fontSize = 50
+        gameOverLabel.text = "GAME OVER"
+        gameOverLabel.zPosition = 11
+        gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY + 125)
+        addChild(gameOverLabel)
+        
+        playAgain = SKSpriteNode(imageNamed: "Play_Again")
+        playAgain.zPosition = 11
+        playAgain.size = CGSize(width: frame.width / 5, height: 115)
+        playAgain.position = CGPoint(x: frame.midX, y: frame.midY - 50)
+        playAgain.name = "playAgainButton"
+        GlobalVariables.shared.bounce(node: playAgain)
+        addChild(playAgain)
+        
+        dimmer = SKSpriteNode(color: UIColor.black, size: CGSize(width: frame.width * 2, height: frame.height * 2))
+        dimmer.position = CGPoint(x: 0, y: 0)
+        dimmer.alpha = 0.6
+        dimmer.zPosition = 9
+        addChild(dimmer)
+        
+        pauseButton.removeFromParent()
+        
+        GlobalVariables.shared.gameState = .gameOver
+        ball.removeFromParent()
+        
+        
     }
     
     func returnDistanceBetweenPoints(startingPoint: CGPoint, endingPoint: CGPoint) -> CGFloat {
@@ -83,26 +126,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK: - Init
+    override func sceneDidLoad() {
+         pauseButton = SKSpriteNode(imageNamed: "Pause_Button")
+    }
+    
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         startGame()
-        
+        createPlayingHud()
     }
     
-    var dragDistance: CGFloat!
-    var startingX: CGFloat!
-    var endingX: CGFloat!
-    var startingY: CGFloat!
-    var endingY: CGFloat!
     
-    var startingPoint: CGPoint!
-    var endingPoint: CGPoint!
-    
+        
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             startingPoint = touch.location(in: self)
-            print(touch.location(in: self).y)
+            let touchedNodes = nodes(at: startingPoint)
+            
+            switch GlobalVariables.shared.gameState {
+            case .playing:
+                print("playing")
+            case .gameOver:
+                for node in touchedNodes {
+                    if node.name == "playAgainButton" {
+                        guard let newGameScene = SKScene(fileNamed: "GameScene") else { return }
+                        newGameScene.scaleMode = .aspectFill
+                        scene?.view?.presentScene(newGameScene, transition: .fade(withDuration: 0.7))
+                    }
+                }
+            default:
+                print("DEFAULT CASE")
+            }
+            
         }
     }
     

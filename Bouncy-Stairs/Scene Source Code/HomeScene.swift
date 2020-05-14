@@ -18,12 +18,21 @@ class HomeScene: SKScene {
     var highScoreLabel: SKLabelNode!
     var bounce: SKAction!
     
+    let userDefaults = UserDefaults.standard
+    
     // MARK: - Methods
     
     
     // MARK: - Init
     override func didMove(to view: SKView) {
-        print("HomeScene")
+        GlobalVariables.shared.gameState = .mainMenu
+        if let highScore = userDefaults.object(forKey: "highScore") as? Int {
+            GlobalVariables.shared.highScore = highScore
+        } else {
+            userDefaults.set(0, forKey: "highScore")
+            
+        }
+        
         createMainMenu()
     }
     
@@ -37,7 +46,7 @@ class HomeScene: SKScene {
                 guard let gameScene = SKScene(fileNamed: "GameScene") else { return }
                 gameScene.scaleMode = .aspectFill
                 
-                scene?.view?.presentScene(gameScene, transition: .crossFade(withDuration: 2))
+                scene?.view?.presentScene(gameScene, transition: .crossFade(withDuration: 1))
             }
         }
         
@@ -54,9 +63,11 @@ extension HomeScene {
         gameTitle.fontSize = 40
         addChild(gameTitle)
         
+        guard let highScore = GlobalVariables.shared.highScore else { return }
+        
         highScoreLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
         highScoreLabel.fontSize = 19
-        highScoreLabel.text = "Score to Beat: 1"
+        highScoreLabel.text = "Score to Beat: \(highScore)"
         highScoreLabel.horizontalAlignmentMode = .center
         highScoreLabel.position = CGPoint(x: gameTitle.position.x, y: gameTitle.position.y - 80)
         addChild(highScoreLabel)

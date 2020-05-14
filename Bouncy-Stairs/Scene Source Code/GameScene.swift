@@ -19,8 +19,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ball: Ball!
     var ballCenterPosition: CGFloat!
     var pauseButton: SKSpriteNode!
+    var scoreLabel: SKLabelNode!
+    let userDefaults = UserDefaults.standard
     
-    var score: Int!
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "Points: \(score)"
+        }
+    }
     
     var gameOverLabel: SKLabelNode!
     var playAgain: SKSpriteNode!
@@ -39,11 +45,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func startGame() {
+        physicsWorld.contactDelegate = self
         let create = SKAction.run {
             self.createStaircase()
         }
         
-        score = 0
         ballCenterPosition = 110
         ball = Ball()
         ball.position = CGPoint(x: ballCenterPosition, y: 4700)
@@ -80,17 +86,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pauseButton.size = CGSize(width: 75, height: 80)
         pauseButton.position = CGPoint(x: (scene?.frame.maxX)! - (pauseButton.size.width + 25), y: (scene?.frame.maxY)! - 150)
         addChild(pauseButton)
+        
+        scoreLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
+        scoreLabel.text = "Points: 0"
+        scoreLabel.color = .white
+        scoreLabel.fontSize = 32
+        scoreLabel.zPosition = 11
+        scoreLabel.position = CGPoint(x: (scene?.frame.midX)!, y: (scene?.frame.maxY)! - 175)
+        addChild(scoreLabel)
+        
     }
     
     func endGame() {
+        if score > GlobalVariables.shared.highScore! {
+            userDefaults.set(score, forKey: "highScore")
+        }
+        
         scene?.removeAllActions()
         stairCase.removeAllActions()
+        
         
         gameOverLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
         gameOverLabel.fontSize = 50
         gameOverLabel.text = "GAME OVER"
         gameOverLabel.zPosition = 11
-        gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY + 125)
+        gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY + 70)
         addChild(gameOverLabel)
         
         playAgain = SKSpriteNode(imageNamed: "Play_Again")
@@ -131,7 +151,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-        physicsWorld.contactDelegate = self
         startGame()
         createPlayingHud()
     }
@@ -158,7 +177,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             default:
                 print("DEFAULT CASE")
             }
-            
         }
     }
     

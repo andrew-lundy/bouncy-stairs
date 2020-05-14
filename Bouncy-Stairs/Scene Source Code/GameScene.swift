@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ball: Ball!
     var ballCenterPosition: CGFloat!
     var pauseButton: SKSpriteNode!
+    var resumePlayingButton: SKSpriteNode!
     var scoreLabel: SKLabelNode!
     let userDefaults = UserDefaults.standard
     
@@ -45,6 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func startGame() {
+        GlobalVariables.shared.gameState = .playing
         physicsWorld.contactDelegate = self
         let create = SKAction.run {
             self.createStaircase()
@@ -52,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         ballCenterPosition = 110
         ball = Ball()
-        ball.position = CGPoint(x: ballCenterPosition, y: 4700)
+        ball.position = CGPoint(x: ballCenterPosition, y: 4800)
         addChild(ball)
         
         let wait = SKAction.wait(forDuration: 5.03)
@@ -62,19 +64,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func ballCollided(with node: SKNode) {
-//        print("BALL COLLIDED")
         if node.name == "scoreDetect" {
-//            print("PLAYER SCORED")
             self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
             score += 1
             ball.changeBallTexture()
             ball.run(.rotate(byAngle: -15, duration: 5))
             updateBallAndStairColor(of: stairCase, and: ball)
         } else if node.name == "endGameDetect" {
-//            print("END GAME")
             endGame()
         } else {
-//            print("NO NODE NAME")
             score += 1
             ball.changeBallTexture()
             ball.run(.rotate(byAngle: -15, duration: 5))
@@ -83,14 +81,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createPlayingHud() {
+        pauseButton = SKSpriteNode(imageNamed: "Pause_Button")
         pauseButton.size = CGSize(width: 75, height: 80)
         pauseButton.position = CGPoint(x: (scene?.frame.maxX)! - (pauseButton.size.width + 25), y: (scene?.frame.maxY)! - 150)
+        pauseButton.name = "pauseButton"
         addChild(pauseButton)
         
         scoreLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
         scoreLabel.text = "Points: 0"
         scoreLabel.color = .white
-        scoreLabel.fontSize = 32
+        scoreLabel.fontSize = 30
         scoreLabel.zPosition = 11
         scoreLabel.position = CGPoint(x: (scene?.frame.midX)!, y: (scene?.frame.maxY)! - 175)
         addChild(scoreLabel)
@@ -102,6 +102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             userDefaults.set(score, forKey: "highScore")
         }
         
+        scene?.isPaused
         scene?.removeAllActions()
         stairCase.removeAllActions()
         
@@ -147,7 +148,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: - Init
     override func sceneDidLoad() {
-         pauseButton = SKSpriteNode(imageNamed: "Pause_Button")
     }
     
     override func didMove(to view: SKView) {
@@ -165,7 +165,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             switch GlobalVariables.shared.gameState {
             case .playing:
-                print("playing")
+                for node in touchedNodes {
+                    if node.name == "pauseButton" {
+                        GlobalVariables.shared.gameState = .paused
+                        
+                        scene?.isPaused = true
+                        
+                        pauseButton.alpha = 0
+                        
+                        resumePlayingButton = SKSpriteNode(imageNamed: "Play_Button")
+                        resumePlayingButton.name = "playButton"
+                        resumePlayingButton.size = pauseButton.size
+                        resumePlayingButton.position = pauseButton.position
+                        addChild(resumePlayingButton)
+                        
+                    }
+                }
+                
+            case .paused:
+                for node in touchedNodes {
+                    if node.name == "playButton" {
+                        GlobalVariables.shared.gameState = .playing
+                        
+                        scene?.isPaused = false
+                        
+                        pauseButton.alpha = 1
+                        resumePlayingButton.alpha = 0
+                        
+                    }
+                }
+                
             case .gameOver:
                 for node in touchedNodes {
                     if node.name == "playAgainButton" {

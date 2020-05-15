@@ -103,8 +103,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             userDefaults.set(score, forKey: "highScore")
         }
         
+        
         scene?.isPaused
         scene?.removeAllActions()
+        stairCase?.isPaused
         stairCase.removeAllActions()
         
         gameOverLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
@@ -168,6 +170,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         GlobalVariables.shared.gameState = .paused
                         
                         scene?.isPaused = true
+//                        scene?.removeAllActions()
+                        stairCase.isPaused = true
                         
                         pauseButton.alpha = 0
                         
@@ -203,8 +207,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         pauseButton.alpha = 1
                         resumePlayingButton.alpha = 0
                         pausedLabel.run(.fadeOut(withDuration: 0.5))
-//                        pausedLabel.removeFromParent()
-                        
                         dimmer.run(.fadeOut(withDuration: 0.5))
                         
                     }

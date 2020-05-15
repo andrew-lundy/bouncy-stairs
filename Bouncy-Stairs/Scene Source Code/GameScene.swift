@@ -20,6 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ballCenterPosition: CGFloat!
     var pauseButton: SKSpriteNode!
     var resumePlayingButton: SKSpriteNode!
+    var pausedLabel: SKLabelNode!
     var scoreLabel: SKLabelNode!
     let userDefaults = UserDefaults.standard
     
@@ -92,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.color = .white
         scoreLabel.fontSize = 30
         scoreLabel.zPosition = 11
-        scoreLabel.position = CGPoint(x: (scene?.frame.midX)!, y: (scene?.frame.maxY)! - 175)
+        scoreLabel.position = CGPoint(x: frame.midX, y: frame.maxY - 175)
         addChild(scoreLabel)
         
     }
@@ -106,7 +107,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scene?.removeAllActions()
         stairCase.removeAllActions()
         
-        
         gameOverLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
         gameOverLabel.fontSize = 50
         gameOverLabel.text = "GAME OVER"
@@ -117,7 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         playAgain = SKSpriteNode(imageNamed: "Play_Again")
         playAgain.zPosition = 11
         playAgain.size = CGSize(width: frame.width / 5, height: 115)
-        playAgain.position = CGPoint(x: frame.midX, y: frame.midY - 50)
+        playAgain.position = CGPoint(x: frame.midX, y: frame.midY - 45)
         playAgain.name = "playAgainButton"
         GlobalVariables.shared.bounce(node: playAgain)
         addChild(playAgain)
@@ -132,8 +132,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         GlobalVariables.shared.gameState = .gameOver
         ball.removeFromParent()
-        
-        
     }
     
     func returnDistanceBetweenPoints(startingPoint: CGPoint, endingPoint: CGPoint) -> CGFloat {
@@ -177,8 +175,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         resumePlayingButton.name = "playButton"
                         resumePlayingButton.size = pauseButton.size
                         resumePlayingButton.position = pauseButton.position
+                        resumePlayingButton.zPosition = 10
                         addChild(resumePlayingButton)
                         
+                        pausedLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
+                        pausedLabel.text = "Paused"
+                        pausedLabel.fontSize = 40
+                        pausedLabel.zPosition = 10
+                        pausedLabel.position = CGPoint(x: frame.midX, y: frame.midY)
+                        addChild(pausedLabel)
+                        
+                        dimmer = SKSpriteNode(color: UIColor.black, size: CGSize(width: frame.width * 2, height: frame.height * 2))
+                        dimmer.position = CGPoint(x: 0, y: 0)
+                        dimmer.alpha = 0.6
+                        dimmer.zPosition = 9
+                        addChild(dimmer)
                     }
                 }
                 
@@ -191,6 +202,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         
                         pauseButton.alpha = 1
                         resumePlayingButton.alpha = 0
+                        pausedLabel.run(.fadeOut(withDuration: 0.5))
+//                        pausedLabel.removeFromParent()
+                        
+                        dimmer.run(.fadeOut(withDuration: 0.5))
                         
                     }
                 }

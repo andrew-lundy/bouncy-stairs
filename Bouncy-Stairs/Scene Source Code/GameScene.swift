@@ -183,7 +183,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         GlobalVariables.shared.gameState = .paused
                         
                         scene?.isPaused = true
-                        scene?.removeAllActions()
+//                        scene?.removeAllActions()
                         
                         stairCase.isPaused = true
                         
@@ -218,14 +218,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
                         pauseButton.alpha = 1
                         resumePlayingButton.alpha = 0
+                        self.scene?.removeAllActions()
                         self.scene?.isPaused = false
-
+                        
                         for child in children as! [SKNode] {
                            if child.name == "stairCase" {
                                child.isPaused = true
                                print(child)
                            }
                         }
+                        
                         
                         pausedLabel.run(.fadeOut(withDuration: 0.5))
                         dimmer.run(.fadeOut(withDuration: 0.5))

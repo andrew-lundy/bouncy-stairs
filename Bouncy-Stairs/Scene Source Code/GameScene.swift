@@ -43,30 +43,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var stairCases = [Staircase]()
     
     
+
+    
+    
     // MARK: - Methods
     func createStaircase() {
         stairCase = Staircase(frame: frame)
         stairCase.createStairSections(with: ball)
         addChild(stairCase)
-        stairCases.append(stairCase)
+//        stairCases.append(stairCase)
     }
     
     func startGame() {
         GlobalVariables.shared.gameState = .playing
         physicsWorld.contactDelegate = self
-        let create = SKAction.run {
-            self.createStaircase()
-        }
         
         ballCenterPosition = 110
         ball = Ball()
         ball.position = CGPoint(x: ballCenterPosition, y: 4800)
         addChild(ball)
-        
+        generateStaircase()
+    }
+    
+    
+    func generateStaircase() {
         let wait = SKAction.wait(forDuration: 5.033)
-        let stairGenerationSequence = SKAction.sequence([create, wait])
+        var createStaircaseAction: SKAction!
+        
+        createStaircaseAction = SKAction.run {
+           self.createStaircase()
+        }
+        
+        let stairGenerationSequence = SKAction.sequence([createStaircaseAction, wait])
         let repeatForever = SKAction.repeatForever(stairGenerationSequence)
         run(repeatForever)
+        
     }
     
     func ballCollided(with node: SKNode) {
@@ -160,9 +171,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createPlayingHud()
     }
     
-    
-        
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             startingPoint = touch.location(in: self)
@@ -175,7 +183,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         GlobalVariables.shared.gameState = .paused
                         
                         scene?.isPaused = true
-//                        scene?.removeAllActions()
+                        scene?.removeAllActions()
+                        
                         stairCase.isPaused = true
                         
                         pauseButton.alpha = 0
@@ -230,6 +239,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             }
                         }
                         
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+//                            self.generateStaircase()
+//                        }
+//
+                        pauseCountdownEnabled = true
+//                        pauseCountdown()
                         
                     }
                 }
@@ -245,6 +260,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             default:
                 print("DEFAULT CASE")
             }
+        }
+    }
+    
+    var pauseCountdownEnabled = false
+    
+    func pauseCountdown() {
+        if pauseCountdownEnabled == true {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.generateStaircase()
+            }
+            pauseCountdownEnabled = false
         }
     }
     

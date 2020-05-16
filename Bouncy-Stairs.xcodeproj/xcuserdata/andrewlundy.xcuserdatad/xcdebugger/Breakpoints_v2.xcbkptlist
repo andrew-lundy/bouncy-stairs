@@ -14,8 +14,8 @@
             filePath = "Bouncy-Stairs/Scene Source Code/GameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "updateBallAndStairColor(of:and:)"
             landmarkType = "7">
          </BreakpointContent>

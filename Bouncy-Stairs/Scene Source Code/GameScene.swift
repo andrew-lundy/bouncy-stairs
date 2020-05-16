@@ -24,6 +24,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: SKLabelNode!
     let userDefaults = UserDefaults.standard
     
+    var countdownEngaged: Bool!
+    
     var score = 0 {
         didSet {
             scoreLabel.text = "Points: \(score)"
@@ -38,12 +40,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var startingPoint: CGPoint!
     var endingPoint: CGPoint!
     
+    var stairCases = [Staircase]()
+    
     
     // MARK: - Methods
     func createStaircase() {
         stairCase = Staircase(frame: frame)
         stairCase.createStairSections(with: ball)
         addChild(stairCase)
+        stairCases.append(stairCase)
     }
     
     func startGame() {
@@ -58,7 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ball.position = CGPoint(x: ballCenterPosition, y: 4800)
         addChild(ball)
         
-        let wait = SKAction.wait(forDuration: 5.03)
+        let wait = SKAction.wait(forDuration: 5.033)
         let stairGenerationSequence = SKAction.sequence([create, wait])
         let repeatForever = SKAction.repeatForever(stairGenerationSequence)
         run(repeatForever)
@@ -107,7 +112,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scene?.isPaused
         scene?.removeAllActions()
         stairCase?.isPaused
-        stairCase.removeAllActions()
+//        stairCase.removeAllActions()
         
         gameOverLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
         gameOverLabel.fontSize = 50
@@ -201,13 +206,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 for node in touchedNodes {
                     if node.name == "playButton" {
                         GlobalVariables.shared.gameState = .playing
-                        
-                        scene?.isPaused = false
-                        
+
                         pauseButton.alpha = 1
                         resumePlayingButton.alpha = 0
+                        self.scene?.isPaused = false
+
+                        for child in children as! [SKNode] {
+                           if child.name == "stairCase" {
+                               child.isPaused = true
+                               print(child)
+                           }
+                        }
+                        
                         pausedLabel.run(.fadeOut(withDuration: 0.5))
                         dimmer.run(.fadeOut(withDuration: 0.5))
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            for child in self.children as! [SKNode] {
+                               if child.name == "stairCase" {
+                                   child.isPaused = false
+                                   print(child)
+                               }
+                            }
+                        }
+                        
                         
                     }
                 }
@@ -248,6 +270,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if ball.position.x < ballCenterPosition || ball.position.x > ballCenterPosition {
             ball.position.x = ballCenterPosition
         }
+        
+        
+//        if GlobalVariables.shared.gameState == .playing {
+//            if countdownEngaged == true {
+//                for child in children as! [SKNode] {
+//                    if child.name == "stairCase" {
+//                        child.isPaused = true
+//                    }
+//                }
+//            }
+//        }
+        
     }
     
     
@@ -268,11 +302,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
-        if nodeA == ball {
-            ballCollided(with: nodeB)
-        } else if nodeB == ball {
-            ballCollided(with: nodeA)
-        }
+//        if nodeA == ball {
+//            ballCollided(with: nodeB)
+//        } else if nodeB == ball {
+//            ballCollided(with: nodeA)
+//        }
     }
     
 }

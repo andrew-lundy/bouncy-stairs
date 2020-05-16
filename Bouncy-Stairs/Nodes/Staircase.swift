@@ -46,6 +46,7 @@ class Staircase: SKNode {
     
     init(frame: CGRect) {
         super.init()
+        name = "stairCase"
         xPosition = frame.maxX + 150
         endPosition = frame.minX - 5000
         stairRect = CGRect(x: xPosition, y: frame.minY, width: stairSize.width, height: stairSize.height)

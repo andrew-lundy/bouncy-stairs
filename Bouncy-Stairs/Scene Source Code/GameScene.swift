@@ -42,16 +42,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var stairCases = [Staircase]()
     
-    
-
-    
-    
     // MARK: - Methods
     func createStaircase() {
+        // If a 'lastStair' node is generated, create a staircase that is connected to the lastStair node. The aim of this is to reduce the gap between the old staircase and the newly generated one.
+        
         stairCase = Staircase(frame: frame)
         stairCase.createStairSections(with: ball)
         addChild(stairCase)
-//        stairCases.append(stairCase)
+        
+        
+        for node in children as [SKNode] {
+            if node.name == "stairCase" {
+                print(node.name!)
+            }
+            
+        }
+        
+        
     }
     
     func startGame() {
@@ -66,6 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
+    
     func generateStaircase() {
         let wait = SKAction.wait(forDuration: 5.033)
         var createStaircaseAction: SKAction!
@@ -77,8 +85,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let stairGenerationSequence = SKAction.sequence([createStaircaseAction, wait])
         let repeatForever = SKAction.repeatForever(stairGenerationSequence)
         run(repeatForever)
-        
     }
+    
+    
     
     func ballCollided(with node: SKNode) {
         if node.name == "scoreDetect" {
@@ -105,6 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(pauseButton)
         
         scoreLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
+        scoreLabel.name = "scoreLabel"
         scoreLabel.text = "Points: 0"
         scoreLabel.color = .white
         scoreLabel.fontSize = 30
@@ -159,7 +169,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let distanceBetweenPoints = sqrt(distanceBetweenX * distanceBetweenX + distanceBetweenY * distanceBetweenY)
         
         return distanceBetweenPoints
-        
     }
     
     // MARK: - Init
@@ -183,8 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         GlobalVariables.shared.gameState = .paused
                         
                         scene?.isPaused = true
-//                        scene?.removeAllActions()
-                        
+                        scene?.removeAllActions()
                         stairCase.isPaused = true
                         
                         pauseButton.alpha = 0
@@ -218,7 +226,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
                         pauseButton.alpha = 1
                         resumePlayingButton.alpha = 0
-                        self.scene?.removeAllActions()
                         self.scene?.isPaused = false
                         
                         for child in children as! [SKNode] {
@@ -227,7 +234,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                print(child)
                            }
                         }
-                        
                         
                         pausedLabel.run(.fadeOut(withDuration: 0.5))
                         dimmer.run(.fadeOut(withDuration: 0.5))
@@ -241,11 +247,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             }
                         }
                         
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
-//                            self.generateStaircase()
-//                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            self.generateStaircase()
+                        }
 //
-                        pauseCountdownEnabled = true
 //                        pauseCountdown()
                         
                     }

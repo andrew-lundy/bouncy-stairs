@@ -228,7 +228,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                            }
                         }
                         
-                        
                         pausedLabel.run(.fadeOut(withDuration: 0.5))
                         dimmer.run(.fadeOut(withDuration: 0.5))
                         
@@ -244,7 +243,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
 //                            self.generateStaircase()
 //                        }
-//
                         pauseCountdownEnabled = true
 //                        pauseCountdown()
                         

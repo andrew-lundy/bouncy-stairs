@@ -44,15 +44,32 @@ class Staircase: SKNode {
     var moveStairs: SKAction!
     var moveSequence: SKAction!
     
+    // Pass a 'last stair' node to the initizialization of the staircase so the staircase has the option of being created at the end point of the previous staircase on screen.
+    
     init(frame: CGRect) {
         super.init()
         name = "stairCase"
         xPosition = frame.maxX + 150
+        createStaircase(at: xPosition)
+    }
+    
+    
+    init(frame: CGRect, connectedTo lastStair: SKNode) {
+        super.init()
+        name = "stairCase"
+        xPosition = lastStair.position.x
+        createStaircase(at: xPosition)
+    
+    }
+    
+    
+    func createStaircase(at xPosition: CGFloat) {
         endPosition = frame.minX - 5000
         stairRect = CGRect(x: xPosition, y: frame.minY, width: stairSize.width, height: stairSize.height)
         moveStairs = SKAction.move(to: CGPoint(x: endPosition, y: self.position.y), duration: 8)
         moveSequence = SKAction.sequence([moveStairs, SKAction.removeFromParent()])
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -143,13 +160,18 @@ class Staircase: SKNode {
         
       for i in 1...3 {
         
-            let stair = SKShapeNode(rect: stairRect)
-            stair.fillColor = colors.randomElement()!
-            stair.strokeColor = stair.fillColor
-            stair.position = CGPoint(x: (stairRect.size.width * 18) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
-            assignPhysicsBodyAndName(to: stair, with: ball)
+        let stair = SKShapeNode(rect: stairRect)
+        stair.fillColor = colors.randomElement()!
+        stair.strokeColor = stair.fillColor
+        stair.position = CGPoint(x: (stairRect.size.width * 18) + (CGFloat(i) * stairSize.width), y: (stairSize.height * 4) + (CGFloat(i) * stairSize.height))
+        assignPhysicsBodyAndName(to: stair, with: ball)
         
-            self.addChild(stair)
+        if i == 3 {
+            stair.name = "lastStair"
+        }
+        
+        self.addChild(stair)
+        
         }
         self.run(moveSequence)
     }

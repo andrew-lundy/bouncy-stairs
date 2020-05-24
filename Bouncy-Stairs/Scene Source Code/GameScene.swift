@@ -42,16 +42,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var stairCases = [Staircase]()
     
-    
-
-    
-    
     // MARK: - Methods
     func createStaircase() {
+        // If a 'lastStair' node is generated, create a staircase that is connected to the lastStair node. The aim of this is to reduce the gap between the old staircase and the newly generated one.
+        
+//        for node in children as [SKNode] {
+//            if node.name == "stairCase" {
+//                for child in node.children {
+//                    if child.name == "lastStair" {
+//                        stairCase = Staircase(frame: frame, connectedTo: child)
+//                        print("LAST STAIR")
+//                    }
+//                }
+//            } else {
+//                stairCase = Staircase(frame: frame)
+//            }
+//        }
+        
         stairCase = Staircase(frame: frame)
         stairCase.createStairSections(with: ball)
         addChild(stairCase)
-//        stairCases.append(stairCase)
     }
     
     func startGame() {
@@ -66,19 +76,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
+    
     func generateStaircase() {
         let wait = SKAction.wait(forDuration: 5.033)
         var createStaircaseAction: SKAction!
         
         createStaircaseAction = SKAction.run {
-           self.createStaircase()
+            self.createStaircase()
         }
         
         let stairGenerationSequence = SKAction.sequence([createStaircaseAction, wait])
         let repeatForever = SKAction.repeatForever(stairGenerationSequence)
         run(repeatForever)
-        
     }
+    
+    
     
     func ballCollided(with node: SKNode) {
         if node.name == "scoreDetect" {
@@ -105,6 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(pauseButton)
         
         scoreLabel = SKLabelNode(fontNamed: GlobalVariables.shared.mainFont)
+        scoreLabel.name = "scoreLabel"
         scoreLabel.text = "Points: 0"
         scoreLabel.color = .white
         scoreLabel.fontSize = 30
@@ -118,7 +131,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if score > GlobalVariables.shared.highScore! {
             userDefaults.set(score, forKey: "highScore")
         }
-        
         
         scene?.isPaused
         scene?.removeAllActions()
@@ -159,7 +171,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let distanceBetweenPoints = sqrt(distanceBetweenX * distanceBetweenX + distanceBetweenY * distanceBetweenY)
         
         return distanceBetweenPoints
-        
     }
     
     // MARK: - Init
@@ -183,8 +194,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         GlobalVariables.shared.gameState = .paused
                         
                         scene?.isPaused = true
-//                        scene?.removeAllActions()
-                        
+                        scene?.removeAllActions()
                         stairCase.isPaused = true
                         
                         pauseButton.alpha = 0
@@ -218,33 +228,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
                         pauseButton.alpha = 1
                         resumePlayingButton.alpha = 0
-                        self.scene?.removeAllActions()
                         self.scene?.isPaused = false
                         
                         for child in children as! [SKNode] {
                            if child.name == "stairCase" {
                                child.isPaused = true
-                               print(child)
                            }
                         }
                         
                         pausedLabel.run(.fadeOut(withDuration: 0.5))
                         dimmer.run(.fadeOut(withDuration: 0.5))
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             for child in self.children as! [SKNode] {
                                if child.name == "stairCase" {
                                    child.isPaused = false
-                                   print(child)
                                }
                             }
+                            
+//                            for node in self.children as [SKNode] {
+//                                if node.name == "stairCase" {
+//                                    for child in node.children {
+//                                        if child.name == "lastStair" {
+//                                            if child.position.x < 3149 {
+//
+////                                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+////                                                    self.generateStaircase()
+////                                                }
+//
+//                                                print(child.position)
+//                                            }
+//
+//                                        }
+//                                    }
+//                                }
+//                            }
                         }
                         
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //                            self.generateStaircase()
 //                        }
-                        pauseCountdownEnabled = true
-//                        pauseCountdown()
+                                               
                         
                     }
                 }
@@ -266,12 +290,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var pauseCountdownEnabled = false
     
     func pauseCountdown() {
-        if pauseCountdownEnabled == true {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.generateStaircase()
-            }
-            pauseCountdownEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.generateStaircase()
         }
+        pauseCountdownEnabled = false
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -298,6 +321,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+        // Check to see if lastStair passes through a trigger point - trigger point not yet created.
+        for node in self.children as [SKNode] {
+            if node.name == "stairCase" {
+                for child in node.children {
+                    if child.name == "lastStair" {
+                        
+                        
+                    }
+                }
+            }
+        }
+        
+
 //        if GlobalVariables.shared.gameState == .playing {
 //            if countdownEngaged == true {
 //                for child in children as! [SKNode] {

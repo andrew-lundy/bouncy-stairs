@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		261A0FCB24590A3100F0208C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FCA24590A3100F0208C /* AppDelegate.swift */; };
+		261A0FCD24590A3100F0208C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FCC24590A3100F0208C /* GameScene.sks */; };
+		261A0FD124590A3100F0208C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FD024590A3100F0208C /* GameScene.swift */; };
+		261A0FD324590A3100F0208C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FD224590A3100F0208C /* GameViewController.swift */; };
+		261A0FD624590A3100F0208C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FD424590A3100F0208C /* Main.storyboard */; };
+		261A0FD824590A3400F0208C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FD724590A3400F0208C /* Assets.xcassets */; };
+		261A0FDB24590A3400F0208C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FD924590A3400F0208C /* LaunchScreen.storyboard */; };
+		261A0FE924590BB600F0208C /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FE824590BB600F0208C /* GlobalVariables.swift */; };
+		261A0FED24590CE100F0208C /* HomeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FEC24590CE100F0208C /* HomeScene.sks */; };
+		261A0FEF24590CF300F0208C /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261A0FEE24590CF300F0208C /* HomeScene.swift */; };
+		261A0FF224591A7900F0208C /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261A0FF124591A7900F0208C /* PressStart2P.ttf */; };
+		269728E32460FAB700F3B756 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269728E22460FAB700F3B756 /* Ball.swift */; };
+		26AD5ACA245A7879001AF22D /* Staircase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AD5AC9245A7879001AF22D /* Staircase.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		261A0FC724590A3100F0208C /* Bouncy Stairs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bouncy Stairs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		261A0FCA24590A3100F0208C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		261A0FCC24590A3100F0208C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		261A0FD024590A3100F0208C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		261A0FD224590A3100F0208C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		261A0FD524590A3100F0208C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		261A0FD724590A3400F0208C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		261A0FDA24590A3400F0208C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		261A0FDC24590A3400F0208C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		261A0FE824590BB600F0208C /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		261A0FEC24590CE100F0208C /* HomeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HomeScene.sks; sourceTree = "<group>"; };
+		261A0FEE24590CF300F0208C /* HomeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
+		261A0FF124591A7900F0208C /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
+		269728E22460FAB700F3B756 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		26AD5AC9245A7879001AF22D /* Staircase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Staircase.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		261A0FC424590A3100F0208C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		261A0FBE24590A3100F0208C = {
+			isa = PBXGroup;
+			children = (
+				261A0FC924590A3100F0208C /* Bouncy-Stairs */,
+				261A0FC824590A3100F0208C /* Products */,
+				261A0FF124591A7900F0208C /* PressStart2P.ttf */,
+			);
+			sourceTree = "<group>";
+		};
+		261A0FC824590A3100F0208C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				261A0FC724590A3100F0208C /* Bouncy Stairs.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		261A0FC924590A3100F0208C /* Bouncy-Stairs */ = {
+			isa = PBXGroup;
+			children = (
+				261A0FE524590B2E00F0208C /* SceneKit Files */,
+				261A0FE424590B2400F0208C /* Scene Source Code */,
+				261A0FE324590B1E00F0208C /* Resources */,
+				261A0FE224590B0E00F0208C /* Nodes */,
+				261A0FCA24590A3100F0208C /* AppDelegate.swift */,
+				261A0FD224590A3100F0208C /* GameViewController.swift */,
+				261A0FD424590A3100F0208C /* Main.storyboard */,
+				261A0FD724590A3400F0208C /* Assets.xcassets */,
+				261A0FD924590A3400F0208C /* LaunchScreen.storyboard */,
+				261A0FDC24590A3400F0208C /* Info.plist */,
+			);
+			path = "Bouncy-Stairs";
+			sourceTree = "<group>";
+		};
+		261A0FE224590B0E00F0208C /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				26AD5AC9245A7879001AF22D /* Staircase.swift */,
+				269728E22460FAB700F3B756 /* Ball.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		261A0FE324590B1E00F0208C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				261A0FE824590BB600F0208C /* GlobalVariables.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		261A0FE424590B2400F0208C /* Scene Source Code */ = {
+			isa = PBXGroup;
+			children = (
+				261A0FD024590A3100F0208C /* GameScene.swift */,
+				261A0FEE24590CF300F0208C /* HomeScene.swift */,
+			);
+			path = "Scene Source Code";
+			sourceTree = "<group>";
+		};
+		261A0FE524590B2E00F0208C /* SceneKit Files */ = {
+			isa = PBXGroup;
+			children = (
+				261A0FCC24590A3100F0208C /* GameScene.sks */,
+				261A0FEC24590CE100F0208C /* HomeScene.sks */,
+			);
+			path = "SceneKit Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		261A0FC624590A3100F0208C /* Bouncy-Stairs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 261A0FDF24590A3400F0208C /* Build configuration list for PBXNativeTarget "Bouncy-Stairs" */;
+			buildPhases = (
+				261A0FC324590A3100F0208C /* Sources */,
+				261A0FC424590A3100F0208C /* Frameworks */,
+				261A0FC524590A3100F0208C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bouncy-Stairs";
+			productName = "Bouncy-Stairs";
+			productReference = 261A0FC724590A3100F0208C /* Bouncy Stairs.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		261A0FBF24590A3100F0208C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "Andrew Lundy";
+				TargetAttributes = {
+					261A0FC624590A3100F0208C = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 261A0FC224590A3100F0208C /* Build configuration list for PBXProject "Bouncy-Stairs" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 261A0FBE24590A3100F0208C;
+			productRefGroup = 261A0FC824590A3100F0208C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				261A0FC624590A3100F0208C /* Bouncy-Stairs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		261A0FC524590A3100F0208C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				261A0FED24590CE100F0208C /* HomeScene.sks in Resources */,
+				261A0FD624590A3100F0208C /* Main.storyboard in Resources */,
+				261A0FCD24590A3100F0208C /* GameScene.sks in Resources */,
+				261A0FF224591A7900F0208C /* PressStart2P.ttf in Resources */,
+				261A0FD824590A3400F0208C /* Assets.xcassets in Resources */,
+				261A0FDB24590A3400F0208C /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		261A0FC324590A3100F0208C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				261A0FD124590A3100F0208C /* GameScene.swift in Sources */,
+				261A0FD324590A3100F0208C /* GameViewController.swift in Sources */,
+				261A0FE924590BB600F0208C /* GlobalVariables.swift in Sources */,
+				26AD5ACA245A7879001AF22D /* Staircase.swift in Sources */,
+				261A0FEF24590CF300F0208C /* HomeScene.swift in Sources */,
+				269728E32460FAB700F3B756 /* Ball.swift in Sources */,
+				261A0FCB24590A3100F0208C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		261A0FD424590A3100F0208C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				261A0FD524590A3100F0208C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		261A0FD924590A3400F0208C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				261A0FDA24590A3400F0208C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		261A0FDD24590A3400F0208C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		261A0FDE24590A3400F0208C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		261A0FE024590A3400F0208C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = QCV468WDTL;
+				INFOPLIST_FILE = "Bouncy-Stairs/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rustynailgames.com.BouncyStairs;
+				PRODUCT_NAME = "Bouncy Stairs";
+				PROVISIONING_PROFILE_SPECIFIER = "Bouncy Stairs Profile";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		261A0FE124590A3400F0208C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = QCV468WDTL;
+				INFOPLIST_FILE = "Bouncy-Stairs/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rustynailgames.com.BouncyStairs;
+				PRODUCT_NAME = "Bouncy Stairs";
+				PROVISIONING_PROFILE_SPECIFIER = "Bouncy Stairs Profile";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		261A0FC224590A3100F0208C /* Build configuration list for PBXProject "Bouncy-Stairs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				261A0FDD24590A3400F0208C /* Debug */,
+				261A0FDE24590A3400F0208C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		261A0FDF24590A3400F0208C /* Build configuration list for PBXNativeTarget "Bouncy-Stairs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				261A0FE024590A3400F0208C /* Debug */,
+				261A0FE124590A3400F0208C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 261A0FBF24590A3100F0208C /* Project object */;
+}

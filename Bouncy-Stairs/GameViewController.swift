@@ -1,0 +1,54 @@
+//
+//  GameViewController.swift
+//  Bouncy-Stairs
+//
+//  Created by Andrew Lundy on 4/28/20.
+//  Copyright © 2020 Andrew Lundy. All rights reserved.
+//
+
+import UIKit
+import SpriteKit
+import GameplayKit
+
+class GameViewController: UIViewController {
+
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge { return .bottom }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        
+        if let view = self.view as! SKView? {
+            // Load the SKScene from 'GameScene.sks'
+            if let scene = SKScene(fileNamed: "HomeScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+            view.showsFPS = true
+            view.showsNodeCount = true
+            view.showsPhysics = true
+            view.showsDrawCount = true
+        }
+    }
+
+    override var shouldAutorotate: Bool {
+        return true
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
+        } else {
+            return .all
+        }
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+}
